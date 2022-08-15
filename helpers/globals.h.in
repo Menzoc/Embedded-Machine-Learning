@@ -1,0 +1,69 @@
+#ifndef GLOBAL_H
+#define GLOBAL_H
+
+#include <complex>
+#include <vector>
+#include <array>
+#include <filesystem>
+
+#define KiB 1024
+#define MiB (1024*1024)
+#define GiB (1024*1024*1024)
+
+/* CONSTANTS */
+const std::string MUSIC_FEATURES_STFT_CSV_TRAIN = "music_features_stft_train.csv";
+const std::string MUSIC_FEATURES_MFCC_CSV_TRAIN = "music_features_mfcc_train.csv";
+const std::string MUSIC_FEATURES_STFT_CSV_TEST = "music_features_stft_test.csv";
+const std::string MUSIC_FEATURES_MFCC_CSV_TEST = "music_features_mfcc_test.csv";
+const std::string DATASET_FOLDER = {"@WORKING_DIR@datasets/"};
+const std::filesystem::path MUSIC_FEATURES_STFT_CSV_TRAIN_PATH = {DATASET_FOLDER + MUSIC_FEATURES_STFT_CSV_TRAIN};
+const std::filesystem::path MUSIC_FEATURES_MFCC_CSV_TRAIN_PATH = {DATASET_FOLDER + MUSIC_FEATURES_MFCC_CSV_TRAIN};
+const std::filesystem::path MUSIC_FEATURES_STFT_CSV_TEST_PATH = {DATASET_FOLDER + MUSIC_FEATURES_STFT_CSV_TEST};
+const std::filesystem::path MUSIC_FEATURES_MFCC_CSV_TEST_PATH = {DATASET_FOLDER + MUSIC_FEATURES_MFCC_CSV_TEST};
+
+const std::string DECISION_TREE_CSV_STFT = "cart_model_stft.csv";
+const std::string DECISION_TREE_CSV_MFCC = "cart_model_mfcc.csv";
+const std::string DECISION_TREE_FOLDER = {"@WORKING_DIR@training/decision_tree/"};
+const std::filesystem::path DECISION_TREE_CSV_PATH_STFT = {DECISION_TREE_FOLDER + DECISION_TREE_CSV_STFT};
+const std::filesystem::path DECISION_TREE_CSV_PATH_MFCC = {DECISION_TREE_FOLDER + DECISION_TREE_CSV_MFCC};
+
+const std::string RANDOM_FOREST_TREES_FOLDER_STFT = "random_forest_trees_stft";
+const std::string RANDOM_FOREST_TREES_FOLDER_MFCC = "random_forest_trees_mfcc";
+const std::string RANDOM_FOREST_FOLDER = {"@WORKING_DIR@training/random_forest/"};
+const std::filesystem::path RANDOM_FOREST_TREES_FOLDER_PATH_STFT = {RANDOM_FOREST_FOLDER + RANDOM_FOREST_TREES_FOLDER_STFT};
+const std::filesystem::path RANDOM_FOREST_TREES_FOLDER_PATH_MFCC = {RANDOM_FOREST_FOLDER + RANDOM_FOREST_TREES_FOLDER_MFCC};
+
+const std::string ONE_VS_ONE_SVM_CSV_STFT = "support_vector_machine_stft.csv";
+const std::string ONE_VS_ONE_SVM_CSV_MFCC = "support_vector_machine_mfcc.csv";
+const std::string ONE_VS_ONE_SVM_FOLDER = {"@WORKING_DIR@training/support_vector_machine/"};
+const std::filesystem::path ONE_VS_ONE_SVM_CSV_PATH_STFT = {ONE_VS_ONE_SVM_FOLDER + ONE_VS_ONE_SVM_CSV_STFT};
+const std::filesystem::path ONE_VS_ONE_SVM_CSV_PATH_MFCC = {ONE_VS_ONE_SVM_FOLDER + ONE_VS_ONE_SVM_CSV_MFCC};
+
+const std::string ARTIFICIAL_NEURAL_NETWORK_LAYERS_FOLDER_STFT = "artificial_neural_network_stft";
+const std::string ARTIFICIAL_NEURAL_NETWORK_LAYERS_FOLDER_MFCC = "artificial_neural_network_mfcc";
+const std::string ARTIFICIAL_NEURAL_NETWORK_FOLDER = {"@WORKING_DIR@training/artificial_neural_network/"};
+const std::filesystem::path ARTIFICIAL_NEURAL_NETWORK_LAYERS_FOLDER_PATH_STFT = {ARTIFICIAL_NEURAL_NETWORK_FOLDER + ARTIFICIAL_NEURAL_NETWORK_LAYERS_FOLDER_STFT};
+const std::filesystem::path ARTIFICIAL_NEURAL_NETWORK_LAYERS_FOLDER_PATH_MFCC = {ARTIFICIAL_NEURAL_NETWORK_FOLDER + ARTIFICIAL_NEURAL_NETWORK_LAYERS_FOLDER_MFCC};
+
+
+/* BASIC TYPES */
+typedef double real_t;
+typedef std::complex<real_t> complex_t;
+typedef uint32_t word_t;
+
+/* GLOBAL VARIABLES */
+constexpr std::size_t N = 512;                                      // WINDOW SIZE
+constexpr std::size_t FFT_SIZE = N / 2;
+constexpr std::size_t MEL_N = 26;                                   // MFCC FILTER CALCULATED
+constexpr std::size_t MEL_APPLIED_N = 20;                           // MFCC FILTER USED
+constexpr real_t Fs = 22050.0;                                      // SAMPLING FREQUENCY
+
+/* ARRAY TYPES */
+typedef std::vector<real_t> real_vector_t;
+typedef std::complex<complex_t> complex_vector_t;
+typedef std::array<real_t, FFT_SIZE> real_fft_array_t;
+typedef std::array<real_t, N> real_n_array_t;
+typedef std::array<complex_t, FFT_SIZE> complex_fft_array_t;
+typedef std::array<complex_t, N> complex_n_array_t;
+
+#endif //GLOBAL_H
