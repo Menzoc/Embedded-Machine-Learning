@@ -1,1 +1,0 @@
-/usr/bin/c++   -O3  -Wall -Wextra -std=c++20 -g CMakeFiles/CART.dir/__/ml_algorithms/decision_tree.cpp.o CMakeFiles/CART.dir/decision_tree_demo.cpp.o -o CART 
